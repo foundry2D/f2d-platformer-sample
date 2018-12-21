@@ -1,0 +1,3 @@
+[submodule "Libraries/f2d"]
+	path = Libraries/f2d
+	url = https://github.com/foundry2D/f2d.git
