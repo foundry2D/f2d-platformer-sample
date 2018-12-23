@@ -9,7 +9,7 @@ import kha.Shaders;
 import kha.Canvas;
 import kha.graphics4.ConstantLocation;
 import f2d.util.ShaderTool;
-import f2d.Sdg;
+import f2d.F2d;
 
 class BrightnessContrast extends Filter
 {
@@ -51,14 +51,14 @@ class BrightnessContrast extends Filter
 
 	function set_brightness(value:Float):Float
 	{
-		brightness = Sdg.clamp(value, -1, 1);
+		brightness = F2d.clamp(value, -1, 1);
 
 		return brightness;
 	}
 
 	function set_contrast(value:Float):Float
 	{
-		contrast = Sdg.clamp(value, -1, 1);
+		contrast = F2d.clamp(value, -1, 1);
 
 		return contrast;
 	}

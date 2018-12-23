@@ -9,7 +9,7 @@ import kha.Canvas;
 import kha.math.FastVector2;
 import kha.graphics4.ConstantLocation;
 import f2d.util.ShaderTool;
-import f2d.Sdg;
+import f2d.F2d;
 
 class DotScreen extends Filter
 {
@@ -31,7 +31,7 @@ class DotScreen extends Filter
 		angleID = pipeline.getConstantLocation('angle');
 		scaleID = pipeline.getConstantLocation('scale');
 
-		resolution = new FastVector2(Sdg.gameWidth, Sdg.gameHeight);
+		resolution = new FastVector2(F2d.gameWidth, F2d.gameHeight);
 		angle = 5;
 		scale = 1;    	
 	}

@@ -9,7 +9,7 @@ import kha.Shaders;
 import kha.Canvas;
 import kha.graphics4.ConstantLocation;
 import f2d.util.ShaderTool;
-import f2d.Sdg;
+import f2d.F2d;
 
 class Noise extends Filter
 {
@@ -44,7 +44,7 @@ class Noise extends Filter
 
 	function set_amount(value:Float):Float
 	{
-		amount = Sdg.clamp(value, 0, 1);
+		amount = F2d.clamp(value, 0, 1);
 
 		return amount;
 	}

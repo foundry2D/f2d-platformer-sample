@@ -3,7 +3,7 @@ package f2d.manager;
 import kha.input.Mouse;
 import kha.math.Vector2;
 import kha.System;
-import f2d.Sdg;
+import f2d.F2d;
 
 class Mouse extends Manager
 {
@@ -102,8 +102,8 @@ class Mouse extends Manager
 	{
 		updateMouseData(x, y, 0, 0);
 
-		Mouse.sx = Std.int(x * Sdg.gameScale);
-		Mouse.sy = Std.int(y * Sdg.gameScale);
+		Mouse.sx = Std.int(x * F2d.gameScale);
+		Mouse.sy = Std.int(y * F2d.gameScale);
 
 		mousePressed.set(index, true);
 		mouseHeld.set(index, true);
@@ -139,7 +139,7 @@ class Mouse extends Manager
 
 		var sysW = System.windowWidth();
 		var sysH = System.windowHeight();
-		var ratio = Sdg.gameWidth / Sdg.gameHeight;
+		var ratio = F2d.gameWidth / F2d.gameHeight;
 		var sysRatio = sysW / sysH;
 
 		var effectiveWidth;//the width of the game in the window
@@ -158,25 +158,25 @@ class Mouse extends Manager
 		var diff = (sysW - effectiveWidth)/2;
 
 		x = Std.int(x - diff);
-		x = Std.int(x/effectiveWidth * Sdg.windowWidth);
+		x = Std.int(x/effectiveWidth * F2d.windowWidth);
 		if(x < 0) x = 0;
-		if(x > Sdg.windowWidth) x = Sdg.windowWidth;
+		if(x > F2d.windowWidth) x = F2d.windowWidth;
 
 		diff = (sysH - effectiveHeight)/2;
 		y = Std.int(y - diff);
-		y = Std.int(y / effectiveHeight  * Sdg.windowHeight);
+		y = Std.int(y / effectiveHeight  * F2d.windowHeight);
 		if(y < 0) y = 0;
-		if(y > Sdg.windowHeight) y = Sdg.windowHeight;
+		if(y > F2d.windowHeight) y = F2d.windowHeight;
 
-		Mouse.x = Std.int(x / Sdg.gameScale);
-		Mouse.y = Std.int(y / Sdg.gameScale);
-		Mouse.dx = Std.int(dx / Sdg.gameScale);
-		Mouse.dy = Std.int(dy / Sdg.gameScale);
+		Mouse.x = Std.int(x / F2d.gameScale);
+		Mouse.y = Std.int(y / F2d.gameScale);
+		Mouse.dx = Std.int(dx / F2d.gameScale);
+		Mouse.dy = Std.int(dy / F2d.gameScale);
 		
-		if (Sdg.screen != null)
+		if (F2d.screen != null)
 		{
-			Mouse.wx = Std.int((x + Sdg.screen.camera.x) / Sdg.gameScale);
-			Mouse.wy = Std.int((y + Sdg.screen.camera.y) / Sdg.gameScale);
+			Mouse.wx = Std.int((x + F2d.screen.camera.x) / F2d.gameScale);
+			Mouse.wy = Std.int((y + F2d.screen.camera.y) / F2d.gameScale);
 		}
 	}
 
@@ -213,7 +213,7 @@ class Mouse extends Manager
 
 	public static function checkSwipe(distance:Int = 30, timeFrom:Float = 0.1, timeUntil:Float = 0.25):Swipe
 	{
-		var swipeOcurred = (isHeld() && Sdg.distance(Mouse.sx, Mouse.sy, Mouse.x, Mouse.y) > distance
+		var swipeOcurred = (isHeld() && F2d.distance(Mouse.sx, Mouse.sy, Mouse.x, Mouse.y) > distance
 			&& durationMouseDown > timeFrom && durationMouseDown < timeUntil);									
 
 		if (swipeOcurred)

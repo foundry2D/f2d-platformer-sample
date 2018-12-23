@@ -1,7 +1,7 @@
 package f2d.graphics.particles.loaders;
 
 import kha.Blob;
-import f2d.Sdg;
+import f2d.F2d;
 import f2d.graphics.particles.ParticleSystem;
 import f2d.graphics.particles.util.MathHelper;
 import f2d.graphics.particles.util.ParticleColor;
@@ -127,8 +127,8 @@ class PlistParticleLoader
         ps.radialAccelerationVariance = map["radialAccelVariance"].asFloat();
         ps.tangentialAcceleration = map["tangentialAcceleration"].asFloat();
         ps.tangentialAccelerationVariance = map["tangentialAccelVariance"].asFloat();
-        ps.blendFuncSource = Sdg.getBlendingFactor(map["blendFuncSource"].asInt());
-        ps.blendFuncDestination = Sdg.getBlendingFactor(map["blendFuncDestination"].asInt());        
+        ps.blendFuncSource = F2d.getBlendingFactor(map["blendFuncSource"].asInt());
+        ps.blendFuncDestination = F2d.getBlendingFactor(map["blendFuncDestination"].asInt());        
         ps.yCoordMultiplier = (map["yCoordFlipped"].asInt() == 1 ? -1.0 : 1.0);
 		
 		ps.__initialize();

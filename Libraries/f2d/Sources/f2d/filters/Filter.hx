@@ -4,7 +4,7 @@ import kha.Color;
 import kha.Image;
 import kha.Canvas;
 import kha.graphics4.PipelineState;
-import f2d.Sdg;
+import f2d.F2d;
 
 @:allow(f2d.Engine)
 class Filter
@@ -18,7 +18,7 @@ class Filter
 	public function new():Void
 	{
 		if (texture == null)
-			texture = Image.createRenderTarget(Sdg.gameWidth, Sdg.gameHeight);
+			texture = Image.createRenderTarget(F2d.gameWidth, F2d.gameHeight);
 
 		enabled = true;
 	}		

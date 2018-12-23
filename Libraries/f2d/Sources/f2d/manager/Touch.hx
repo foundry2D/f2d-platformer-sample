@@ -87,18 +87,18 @@ class Touch extends Manager
 		{
 			touches[index].rawX = x;
 			touches[index].rawY = y;
-			touches[index].x = Std.int(x / Sdg.gameScale);
-			touches[index].y = Std.int(y / Sdg.gameScale);
-			touches[index].dx = Std.int((x - touches[index].x) / Sdg.gameScale);
-			touches[index].dy = Std.int((y - touches[index].y) / Sdg.gameScale);
+			touches[index].x = Std.int(x / F2d.gameScale);
+			touches[index].y = Std.int(y / F2d.gameScale);
+			touches[index].dx = Std.int((x - touches[index].x) / F2d.gameScale);
+			touches[index].dy = Std.int((y - touches[index].y) / F2d.gameScale);
 		}
 		else
 		{
 			touches.set(index, {
 				rawX: x,
 				rawY: y,
-				x: Std.int(x / Sdg.gameScale),
-				y: Std.int(y / Sdg.gameScale),
+				x: Std.int(x / F2d.gameScale),
+				y: Std.int(y / F2d.gameScale),
 				dx: 0,
 				dy: 0,
 				state: InputState.NONE

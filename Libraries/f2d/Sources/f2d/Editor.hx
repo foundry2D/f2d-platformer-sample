@@ -22,13 +22,13 @@ class Editor
         {
             if (!active)
             {
-                Sdg.screen.active = false;
+                F2d.screen.active = false;
                 active = true;
                 open();
             }
             else
             {
-                Sdg.screen.active = true;
+                F2d.screen.active = true;
                 active = false;
                 close();
             }

@@ -193,14 +193,14 @@ class Tilemap extends Graphic
 	{
 		canvas.g2.color = color;
 		
-		if 	(((x + widthInPixels) < cameraX) || (x > (cameraX + Sdg.gameWidth)) ||
-			((y + heightInPixels) < cameraY) || (y > (cameraY + Sdg.gameHeight)))
+		if 	(((x + widthInPixels) < cameraX) || (x > (cameraX + F2d.gameWidth)) ||
+			((y + heightInPixels) < cameraY) || (y > (cameraY + F2d.gameHeight)))
 				return;		   
 		
 		_startCol = Math.floor((x > cameraX ? 0 : (cameraX - x)) / tileset.tileWidth);
-		_endCol = Std.int(((x + widthInPixels) > (cameraX + Sdg.gameWidth) ? (cameraX + Sdg.gameWidth - x) : widthInPixels) / tileset.tileWidth);
+		_endCol = Std.int(((x + widthInPixels) > (cameraX + F2d.gameWidth) ? (cameraX + F2d.gameWidth - x) : widthInPixels) / tileset.tileWidth);
 		_startRow = Math.floor((y > cameraY ? 0 : (cameraY - y)) / tileset.tileHeight);
-		_endRow = Std.int(((y + heightInPixels) > (cameraY + Sdg.gameHeight) ? (cameraY + Sdg.gameHeight - y) : heightInPixels) / tileset.tileHeight);						
+		_endRow = Std.int(((y + heightInPixels) > (cameraY + F2d.gameHeight) ? (cameraY + F2d.gameHeight - y) : heightInPixels) / tileset.tileHeight);						
 		
 		if (_endCol < widthInTiles)
 			_endCol++;

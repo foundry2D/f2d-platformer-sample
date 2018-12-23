@@ -23,8 +23,8 @@ class Camera
         y = 0;
         this.screen = screen;
         
-        width = Sdg.gameWidth;
-        height = Sdg.gameHeight;
+        width = F2d.gameWidth;
+        height = F2d.gameHeight;
         halfWidth = Std.int(width / 2);
         halfHeight = Std.int(height / 2);
         
@@ -93,10 +93,10 @@ class Camera
         }
         else
         {
-            if ((x + Sdg.gameWidth + stepX) < width)
+            if ((x + F2d.gameWidth + stepX) < width)
                 x += stepX;
             else
-                x = width - Sdg.gameWidth;
+                x = width - F2d.gameWidth;
         }
         
         if (stepY < 0)
@@ -108,10 +108,10 @@ class Camera
         }
         else
         {
-            if ((y + Sdg.gameHeight + stepY) < height)
+            if ((y + F2d.gameHeight + stepY) < height)
                 y += stepY;
             else
-                y = height - Sdg.gameHeight;
+                y = height - F2d.gameHeight;
         }
     }
 }

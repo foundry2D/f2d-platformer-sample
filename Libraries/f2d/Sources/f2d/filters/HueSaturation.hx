@@ -9,7 +9,7 @@ import kha.Shaders;
 import kha.Canvas;
 import kha.graphics4.ConstantLocation;
 import f2d.util.ShaderTool;
-import f2d.Sdg;
+import f2d.F2d;
 
 class HueSaturation extends Filter
 {
@@ -51,14 +51,14 @@ class HueSaturation extends Filter
 
 	function set_hue(value:Float):Float
 	{
-		hue = Sdg.clamp(value, -1, 1);
+		hue = F2d.clamp(value, -1, 1);
 
 		return hue;
 	}
 
 	function set_saturation(value:Float):Float
 	{
-		saturation = Sdg.clamp(value, -1, 1);
+		saturation = F2d.clamp(value, -1, 1);
 
 		return saturation;
 	}

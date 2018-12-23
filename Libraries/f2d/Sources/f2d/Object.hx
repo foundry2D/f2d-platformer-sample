@@ -271,7 +271,7 @@ class Object
 	 */
 	public inline function distanceFrom(e:Object):Float
 	{
-		return Sdg.distanceRects(x, y, width, height, e.x, e.y, e.width, e.height);		
+		return F2d.distanceRects(x, y, width, height, e.x, e.y, e.width, e.height);		
 	}
 
 	/**
@@ -282,7 +282,7 @@ class Object
 	 */
 	public inline function distanceToPoint(px:Float, py:Float):Float
 	{
-		return Sdg.distanceRectPoint(px, py, x, y, width, height);
+		return F2d.distanceRectPoint(px, py, x, y, width, height);
 	}
 
 	/**
@@ -295,7 +295,7 @@ class Object
 	 */
 	public inline function distanceToRect(rx:Float, ry:Float, rwidth:Float, rheight:Float):Float
 	{
-		return Sdg.distanceRects(x, y, width, height, rx, ry, rwidth, rheight);
+		return F2d.distanceRects(x, y, width, height, rx, ry, rwidth, rheight);
 	}
 
 	inline public function get_right():Float

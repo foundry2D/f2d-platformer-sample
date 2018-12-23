@@ -69,7 +69,7 @@ class Animator extends Component
 	
 	override public function update():Void
 	{
-		elapsed += Sdg.dt * Math.abs(direction);
+		elapsed += F2d.dt * Math.abs(direction);
 
 		// next frame
 		if (elapsed >= 1 / currAnimation.fps)

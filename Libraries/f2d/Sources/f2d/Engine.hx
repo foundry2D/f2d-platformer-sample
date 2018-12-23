@@ -40,10 +40,10 @@ class Engine
 		
 		currTime = Scheduler.time();
 		
-		Sdg.windowWidth = System.windowWidth();
-        Sdg.halfWinWidth = Std.int(Sdg.windowWidth / 2);
-		Sdg.windowHeight = System.windowHeight();
-        Sdg.halfWinHeight = Std.int(Sdg.windowHeight / 2);
+		F2d.windowWidth = System.windowWidth();
+        F2d.halfWinWidth = Std.int(F2d.windowWidth / 2);
+		F2d.windowHeight = System.windowHeight();
+        F2d.halfWinHeight = Std.int(F2d.windowHeight / 2);
         
 		this.useBackbuffer = useBackbuffer;
 
@@ -51,46 +51,46 @@ class Engine
 		{
 			backbuffer = Image.createRenderTarget(width, height);
 
-			Sdg.gameWidth = backbuffer.width;
-        	Sdg.halfGameWidth = Std.int(backbuffer.width / 2);
-			Sdg.gameHeight = backbuffer.height;
-        	Sdg.halfGameHeight = Std.int(backbuffer.height / 2);
+			F2d.gameWidth = backbuffer.width;
+        	F2d.halfGameWidth = Std.int(backbuffer.width / 2);
+			F2d.gameHeight = backbuffer.height;
+        	F2d.halfGameHeight = Std.int(backbuffer.height / 2);
 
 			render = renderWithBackbuffer;
 		}
 		else
 		{
-			Sdg.gameWidth = Sdg.windowWidth;
-        	Sdg.halfGameWidth = Sdg.halfWinWidth;
-			Sdg.gameHeight = Sdg.windowHeight;
-        	Sdg.halfGameHeight = Sdg.halfWinHeight;
+			F2d.gameWidth = F2d.windowWidth;
+        	F2d.halfGameWidth = F2d.halfWinWidth;
+			F2d.gameHeight = F2d.windowHeight;
+        	F2d.halfGameHeight = F2d.halfWinHeight;
 
 			render = renderWithFramebuffer;
 		}
 
 		if (fps != null)
-			Sdg.fixedDt = 1 / fps;
+			F2d.fixedDt = 1 / fps;
 		else
-			Sdg.fixedDt = 1 / 60;
+			F2d.fixedDt = 1 / 60;
         
         calcGameScale();           
 		
 		managers = new Array<Manager>();
-		Sdg.screens = new Map<String, Screen>();		
+		F2d.screens = new Map<String, Screen>();		
 	}
     
     inline function calcGameScale():Void
     {        
-        Sdg.gameScale = Sdg.windowWidth / Sdg.gameWidth;
+        F2d.gameScale = F2d.windowWidth / F2d.gameWidth;
     }
 	
 	function onForeground()
 	{
 		active = true;
 		
-		if (Sdg.timeTasks != null)
+		if (F2d.timeTasks != null)
 		{
-			for (id in Sdg.timeTasks)
+			for (id in F2d.timeTasks)
 				Scheduler.pauseTimeTask(id, false);
 		}
 	}	
@@ -99,9 +99,9 @@ class Engine
 	{
 		active = false;
 		
-		if (Sdg.timeTasks != null)
+		if (F2d.timeTasks != null)
 		{
-			for (id in Sdg.timeTasks)
+			for (id in F2d.timeTasks)
 				Scheduler.pauseTimeTask(id, true);
 		}
 	}
@@ -112,28 +112,28 @@ class Engine
 		prevTime = currTime;
 		currTime = Scheduler.time();
 		
-		Sdg.dt = currTime - prevTime;
+		F2d.dt = currTime - prevTime;
 		
 		if (active)
 		{
-			if (Sdg.screen != null && Sdg.screen.active)
+			if (F2d.screen != null && F2d.screen.active)
 			{
-				Sdg.screen.updateLists();
+				F2d.screen.updateLists();
 				
-				Sdg.screen.update();
-				Sdg.screen.updateLists(false);
-				Sdg.updateScreenShake();
+				F2d.screen.update();
+				F2d.screen.updateLists(false);
+				F2d.updateScreenShake();
 			}
             
             #if debug
-            if (Sdg.editor != null)
+            if (F2d.editor != null)
             {
-                Sdg.editor.checkMode();
+                F2d.editor.checkMode();
                 
-                if (Sdg.editor.active)
+                if (F2d.editor.active)
                 {
-                    Sdg.screen.updateLists();
-                    Sdg.editor.update();
+                    F2d.screen.updateLists();
+                    F2d.editor.update();
                 }
                     
             }
@@ -174,12 +174,12 @@ class Engine
 	
 	function renderGame(canvas:Canvas):Void
 	{							
-		canvas.g2.begin(true, Sdg.screen.bgColor);
-		Sdg.screen.render(canvas);					
+		canvas.g2.begin(true, F2d.screen.bgColor);
+		F2d.screen.render(canvas);					
             
 		#if debug
-        if (Sdg.editor != null && Sdg.editor.active)
-            Sdg.editor.render(canvas);
+        if (F2d.editor != null && F2d.editor.active)
+            F2d.editor.render(canvas);
         #end
 
 		if (persistentRender != null)
@@ -193,7 +193,7 @@ class Engine
 
 	function renderWithBackbuffer(framebuffer:Framebuffer):Void
 	{
-		if (Sdg.screen != null)
+		if (F2d.screen != null)
 		{
 			renderGame(backbuffer);
 			applyBackbufferToFramebuffer(framebuffer);			
@@ -202,10 +202,10 @@ class Engine
 
 	function renderWithBackbufferAndFilter(framebuffer:Framebuffer):Void
 	{
-		if (Sdg.screen != null)
+		if (F2d.screen != null)
 		{
 			renderGame(Filter.texture);
-			Sdg.screen.filter.apply(backbuffer);
+			F2d.screen.filter.apply(backbuffer);
 			applyBackbufferToFramebuffer(framebuffer);
 		}
 	}
@@ -223,47 +223,47 @@ class Engine
 
 	function renderWithFramebuffer(framebuffer:Framebuffer):Void
 	{
-		if (Sdg.screen != null)
+		if (F2d.screen != null)
 			renderGame(framebuffer);
 	}
 
 	function renderWithFramebufferAndFilter(framebuffer:Framebuffer):Void
 	{
-		if (Sdg.screen != null)
+		if (F2d.screen != null)
 		{
 			renderGame(Filter.texture);
-			Sdg.screen.filter.apply(framebuffer);
+			F2d.screen.filter.apply(framebuffer);
 		}
 	}	
 
 	public function updateGameSize(newWidth:Int, newHeight:Int):Void
 	{
-		Sdg.windowWidth = System.windowWidth();
-        Sdg.halfWinWidth = Std.int(Sdg.windowWidth / 2);
-		Sdg.windowHeight = System.windowHeight();
-        Sdg.halfWinHeight = Std.int(Sdg.windowHeight / 2);
+		F2d.windowWidth = System.windowWidth();
+        F2d.halfWinWidth = Std.int(F2d.windowWidth / 2);
+		F2d.windowHeight = System.windowHeight();
+        F2d.halfWinHeight = Std.int(F2d.windowHeight / 2);
 
 		if (useBackbuffer)
 		{
 			backbuffer = Image.createRenderTarget(newWidth, newHeight);
 
-			Sdg.gameWidth = backbuffer.width;
-        	Sdg.halfGameWidth = Std.int(backbuffer.width / 2);
-			Sdg.gameHeight = backbuffer.height;
-        	Sdg.halfGameHeight = Std.int(backbuffer.height / 2);
+			F2d.gameWidth = backbuffer.width;
+        	F2d.halfGameWidth = Std.int(backbuffer.width / 2);
+			F2d.gameHeight = backbuffer.height;
+        	F2d.halfGameHeight = Std.int(backbuffer.height / 2);
 		}
 		else
 		{
-			Sdg.gameWidth = Sdg.windowWidth;
-        	Sdg.halfGameWidth = Sdg.halfWinWidth;
-			Sdg.gameHeight = Sdg.windowHeight;
-        	Sdg.halfGameHeight = Sdg.halfWinHeight;
+			F2d.gameWidth = F2d.windowWidth;
+        	F2d.halfGameWidth = F2d.halfWinWidth;
+			F2d.gameHeight = F2d.windowHeight;
+        	F2d.halfGameHeight = F2d.halfWinHeight;
 		}
 
 		calcGameScale();
 
-		if (Sdg.screen != null)
-			Sdg.screen.gameSizeUpdated(newWidth, newHeight);
+		if (F2d.screen != null)
+			F2d.screen.gameSizeUpdated(newWidth, newHeight);
 	}
 
 	public function enablePauseOnLostFocus(value:Bool):Void
@@ -274,7 +274,7 @@ class Engine
 			System.notifyOnApplicationState(null, null, null, null, null);
 	}
 
-	@:allow(f2d.Sdg)
+	@:allow(f2d.F2d)
 	@:allow(f2d.Screen)
 	@:allow(f2d.filters.Filter)
 	function chooseRenderFunction(filter:Filter):Void

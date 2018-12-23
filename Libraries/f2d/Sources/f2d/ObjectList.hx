@@ -1,7 +1,7 @@
 package f2d;
 
 import f2d.Object;
-import f2d.Sdg;
+import f2d.F2d;
 
 class ObjectList
 {
@@ -39,19 +39,19 @@ class ObjectList
 
 	public function addToScreen()
 	{		
-		if (Sdg.screen != null)
+		if (F2d.screen != null)
 		{
 			for (object in objects)			
-				Sdg.screen.add(object);			
+				F2d.screen.add(object);			
 		}
 	}
 
 	public function removeFromScreen()
 	{		
-		if (Sdg.screen != null)
+		if (F2d.screen != null)
 		{
 			for (object in objects)			
-				Sdg.screen.remove(object);			
+				F2d.screen.remove(object);			
 		}
 	}
 

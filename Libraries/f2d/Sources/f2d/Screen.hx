@@ -53,8 +53,8 @@ class Screen
 		bgColor = Color.Black;		
 		
 		camera = new Camera(this);
-		worldWidth = Sdg.gameWidth;
-		worldHeight = Sdg.gameHeight;
+		worldWidth = F2d.gameWidth;
+		worldHeight = F2d.gameHeight;
 	}
     
     public function init():Void {}
@@ -292,7 +292,7 @@ class Screen
 				//if (object.type != "") removeType(object);
 				if (object.name != "") unregisterName(object);
 			}
-			Sdg.clear(removeList);
+			F2d.clear(removeList);
 		}
         
         if (destroyList.length > 0)
@@ -302,7 +302,7 @@ class Screen
 				object.destroy();
                 object = null;
 			}   
-            Sdg.clear(destroyList);
+            F2d.clear(destroyList);
         }
 
 		// add objects
@@ -325,7 +325,7 @@ class Screen
 				object.added();
 				object.initComponents();
 			}
-			Sdg.clear(addList);
+			F2d.clear(addList);
 		}		
 	}
 	
@@ -365,7 +365,7 @@ class Screen
 			if (layerList.length == 0)			
 				layerList[0] = object.layer;			
 			else			
-				Sdg.insertSortedKey(layerList, object.layer, layerSort);			
+				F2d.insertSortedKey(layerList, object.layer, layerSort);			
 		}
 		
 		list.add(object);
